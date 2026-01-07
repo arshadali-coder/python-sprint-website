@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Winter Sprint 2026 | Jamia Millia Islamia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo-group {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .logo-placeholder {
+            width: 60px;
+            height: 60px;
+            background: #f0f0f0;
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            text-align: center;
+            color: #999;
+        }
+
+        .header-title h1 {
+            font-size: 1.5rem;
+            color: #667eea;
+        }
+
+        .header-title p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .hero .emoji {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            opacity: 0.95;
+        }
+
+        .hero .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-style: italic;
+        }
+
+        /* Content Sections */
+        section {
+            background: white;
+            margin: 40px 0;
+            padding: 60px 0;
+        }
+
+        section:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: #667eea;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin: 30px 0 15px;
+            color: #764ba2;
+        }
+
+        .quote {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            font-size: 1.3rem;
+            font-style: italic;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Philosophy List */
+        .philosophy-list {
+            list-style: none;
+            padding: 20px 0;
+        }
+
+        .philosophy-list li {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f0f0f0;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            font-size: 1.1rem;
+        }
+
+        /* Tools Section */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .tool-card h3 {
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        /* Tracks Section */
+        .tracks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .track-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-top: 5px solid;
+        }
+
+        .track-card.project {
+            border-top-color: #3b82f6;
+        }
+
+        .track-card.core {
+            border-top-color: #fbbf24;
+        }
+
+        .track-card.foundation {
+            border-top-color: #10b981;
+        }
+
+        .track-card h3 {
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .track-emoji {
+            font-size: 2rem;
+        }
+
+        .track-card ul {
+            list-style-position: inside;
+            margin: 15px 0;
+        }
+
+        .track-card li {
+            margin: 8px 0;
+        }
+
+        /* GitHub Section */
+        .github-structure {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        .github-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            margin: 20px 0;
+            transition: background 0.3s;
+        }
+
+        .github-link:hover {
+            background: #764ba2;
+        }
+
+        /* Submission Info */
+        .submission-box {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .submission-box h3 {
+            color: white;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        /* Organizer Section */
+        .organizer-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            margin: 30px auto;
+        }
+
+        .organizer-card h3 {
+            color: #667eea;
+            margin: 15px 0;
+        }
+
+        /* Footer */
+        footer {
+            background: #1e1e1e;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .logo-group {
+                justify-content: center;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .tracks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-group">
+                    <div class="logo-placeholder">
+                        <img src="" alt="Jamia Millia Islamia Logo" style="display:none">
+                        JMI Logo
+                    </div>
+                    <div class="logo-placeholder">
+                        <img src="" alt="Coding Council Logo" style="display:none">
+                        Coding Council
+                    </div>
+                    <div class="logo-placeholder">
+                        <img src="" alt="W3B Logo" style="display:none">
+                        W3B Logo
+                    </div>
+                </div>
+                <div class="header-title">
+                    <h1>Python Winter Sprint 2026</h1>
+                    <p>Jamia Millia Islamia | Coding Council × W3B</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <span class="emoji">🐍</span>
+            <h1>Python Winter Sprint 2026</h1>
+            <p>Computer Engineering '29 | Coding Council</p>
+            <p class="subtitle">Learn Python by doing, not watching</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>🚀 About the Sprint</h2>
+            <p style="text-align: center; font-size: 1.2rem; max-width: 800px; margin: 0 auto 30px;">
+                Python Winter Sprint 2026 is a peer-led, practice-first learning initiative designed to help students build real Python skills through daily tasks, structured tracks, and GitHub-based submissions.
+            </p>
+            <p style="text-align: center; font-size: 1.1rem; max-width: 800px; margin: 0 auto;">
+                This sprint is not about rushing to complete code. It is about learning how to think, build, and document properly — the way real developers do.
+            </p>
+        </div>
+    </section>
+
+    <section id="philosophy">
+        <div class="container">
+            <h2>🎯 Agenda & Philosophy</h2>
+            <ul class="philosophy-list">
+                <li>Learn Python by doing, not watching</li>
+                <li>Build consistency over 14 days</li>
+                <li>Maintain verifiable proof of work on GitHub</li>
+                <li>Focus on logic, structure, and clarity</li>
+                <li>No pressure, no competition — learning comes first</li>
+            </ul>
+            <div class="quote">
+                "Upload whatever day's task you solve. Missing a day is fine. Not learning is not."
+            </div>
+        </div>
+    </section>
+
+    <section id="tools">
+        <div class="container">
+            <h2>🛠 Tools You Need</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <h3>Python</h3>
+                    <p>Latest version required. Download from python.org</p>
+                </div>
+                <div class="tool-card">
+                    <h3>VS Code</h3>
+                    <p>Your code editor. Free and powerful.</p>
+                </div>
+                <div class="tool-card">
+                    <h3>GitHub Account</h3>
+                    <p>For tracking and submitting your work</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <h3>New to GitHub?</h3>
+                <p>Watch this 4-5 minute tutorial:</p>
+                <a href="https://youtu.be/ussgXhJ-cp0" class="github-link" target="_blank">🔗 GitHub Basics Tutorial</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="tracks">
+        <div class="container">
+            <h2>🧭 Learning Tracks</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 40px;">
+                The sprint runs under three structured learning tracks. Choose the one that fits your current level.
+            </p>
+            
+            <div class="tracks-grid">
+                <div class="track-card project">
+                    <h3><span class="track-emoji">🔵</span> Project Track</h3>
+                    <p><strong>For students with strong Python command who want industry-grade projects</strong></p>
+                    <ul>
+                        <li>Daily project-grade PDFs</li>
+                        <li>Complete project instructions</li>
+                        <li>Expected behaviour & sample outputs</li>
+                        <li>Replicate the sample run correctly</li>
+                    </ul>
+                    <p><strong>Outcome:</strong> 6-7 solid, project-grade projects on GitHub</p>
+                </div>
+
+                <div class="track-card core">
+                    <h3><span class="track-emoji">🟡</span> Core Track</h3>
+                    <p><strong>For students following from Day 1, no longer beginners</strong></p>
+                    <ul>
+                        <li>Know variables, data types, strings</li>
+                        <li>Comfortable with if/else and loops</li>
+                        <li>More challenging logic problems</li>
+                        <li>Can attempt Project Track if confident</li>
+                    </ul>
+                    <p><strong>Focus:</strong> Consistency is the key</p>
+                </div>
+
+                <div class="track-card foundation">
+                    <h3><span class="track-emoji">🟢</span> Foundation Track</h3>
+                    <p><strong>For complete beginners, just starting Python</strong></p>
+                    <ul>
+                        <li>Page 1 of every PDF</li>
+                        <li>Daily topic with learning resources</li>
+                        <li>Practice examples first</li>
+                        <li>Then solve the Foundation question</li>
+                    </ul>
+                    <p><strong>⚠️ Important:</strong> Don't binge-watch! Code alongside the video.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="github">
+        <div class="container">
+            <h2>📁 GitHub Repository Structure</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
+                Every participant must maintain one repository named <strong>python-winter-sprint-2026</strong>
+            </p>
+            <div class="github-structure">
+python-winter-sprint-2026/
+│
+├── Day-1/
+│   └── program.py
+├── Day-2/
+│   └── program.py
+├── Day-3/
+│   └── program.py
+│
+└── ...
+            </div>
+            <p style="text-align: center; font-size: 1.1rem; margin-top: 30px;">
+                This repository is your proof of learning and participation.
+            </p>
+        </div>
+    </section>
+
+    <section id="submission">
+        <div class="container">
+            <div class="submission-box">
+                <h3>⏰ Submission Deadline</h3>
+                <p style="font-size: 1.3rem;">Submit your daily work before <strong>11:00 PM</strong></p>
+                <p style="margin-top: 15px; opacity: 0.9;">Late submissions are okay occasionally — consistency matters more than perfection.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="organizer">
+        <div class="container">
+            <h2>🧑‍💻 Organizer</h2>
+            <div class="organizer-card">
+                <h3>Arshad Ali</h3>
+                <p>Computer Engineering '29</p>
+                <p><strong>President, Coding Council</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <section id="final-note" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <div class="container" style="text-align: center;">
+            <h2 style="color: white;">📌 Final Note</h2>
+            <p style="font-size: 1.2rem; max-width: 800px; margin: 20px auto;">
+                Many people join just to observe — that's fine.<br>
+                If you start today, even from a previous day, you're already ahead.
+            </p>
+            <p style="font-size: 1.3rem; font-weight: bold; margin-top: 30px;">
+                This sprint is about learning, not showing off code. 💡
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p><strong>Python Winter Sprint 2026</strong></p>
+            <p>Organized by Coding Council in collaboration with W3B</p>
+            <p>Jamia Millia Islamia</p>
+            <p style="margin-top: 20px; opacity: 0.8;">© 2026 Coding Council. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
