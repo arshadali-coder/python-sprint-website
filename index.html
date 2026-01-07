@@ -51,15 +51,15 @@
         .logo-placeholder {
             width: 60px;
             height: 60px;
-            background: #f0f0f0;
-            border: 2px dashed #ccc;
             border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 10px;
             text-align: center;
-            color: #999;
+        }
+        .logo-placeholder img{
+            width: 60px;
         }
 
         .header-title h1 {
@@ -75,7 +75,7 @@
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
+            color: rgb(0, 0, 0);
             padding: 80px 0;
             text-align: center;
         }
@@ -231,28 +231,57 @@
 
         /* GitHub Section */
         .github-structure {
-            background: #1e1e1e;
-            color: #d4d4d4;
-            padding: 20px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            overflow-x: auto;
-            margin: 20px 0;
+            background: #0000008e;
+            border-radius: 12px;
+            padding: 20px 25px;
+            font-family: "JetBrains Mono", monospace;
+            color: #c9d1d9;
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .github-link {
-            display: inline-block;
-            background: #667eea;
-            color: white;
-            padding: 15px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin: 20px 0;
-            transition: background 0.3s;
+        .tree {
+            list-style: none;
+            padding-left: 0;
         }
 
-        .github-link:hover {
-            background: #764ba2;
+        .tree li {
+            padding: 6px 0;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .tree li::before {
+            content: "";
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: #30363d;
+        }
+
+        .tree li:last-child::before {
+            height: 14px;
+        }
+
+        .tree span {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .folder {
+            color: #58a6ff;
+            font-weight: 600;
+        }
+
+        .file {
+            color: #c9d1d9;
+        }
+
+        .icon {
+            font-size: 1.1rem;
         }
 
         /* Submission Info */
@@ -273,19 +302,109 @@
         }
 
         /* Organizer Section */
+        .organizers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 30px;
+            margin: 40px auto;
+            max-width: 900px;
+        }
+
         .organizer-card {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            background: #0d1117;
+            border: 1px solid #30363d;
+            border-radius: 18px;
+            padding: 30px 25px;
             text-align: center;
-            max-width: 500px;
-            margin: 30px auto;
+            color: #c9d1d9;
+            position: relative;
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .organizer-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: 18px;
+            padding: 1px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        .organizer-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 14px 40px rgba(0, 0, 0, 0.45);
         }
 
         .organizer-card h3 {
+            margin: 10px 0 6px;
+            font-size: 1.4rem;
+            color: #58a6ff;
+        }
+
+        .organizer-card p {
+            margin: 6px 0;
+            font-size: 0.95rem;
+            color: #8b949e;
+        }
+
+        .organizer-card strong {
+            color: #c9d1d9;
+            font-weight: 600;
+        }
+
+        /* PDF Grid */
+        .pdf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .pdf-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid #667eea;
+        }
+
+        .pdf-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.15);
+        }
+
+        .pdf-card h3 {
             color: #667eea;
-            margin: 15px 0;
+            margin: 0 0 10px 0;
+            font-size: 1.5rem;
+        }
+
+        .pdf-card p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .pdf-link {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background 0.3s;
+            font-weight: 600;
+        }
+
+        .pdf-link:hover {
+            background: #764ba2;
         }
 
         /* Footer */
@@ -331,16 +450,13 @@
             <div class="header-content">
                 <div class="logo-group">
                     <div class="logo-placeholder">
-                        <img src="" alt="Jamia Millia Islamia Logo" style="display:none">
-                        JMI Logo
+                        <img src="jamia-logo.png" alt="Jamia Millia Islamia Logo">
                     </div>
                     <div class="logo-placeholder">
-                        <img src="" alt="Coding Council Logo" style="display:none">
-                        Coding Council
+                        <img src="cc-logo.png" alt="Coding Council Logo">
                     </div>
                     <div class="logo-placeholder">
-                        <img src="" alt="W3B Logo" style="display:none">
-                        W3B Logo
+                        <img src="w3b-logo.png" alt="W3B Logo">
                     </div>
                 </div>
                 <div class="header-title">
@@ -461,28 +577,75 @@
     </section>
 
     <section id="github">
-        <div class="container">
-            <h2>📁 GitHub Repository Structure</h2>
-            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 30px;">
-                Every participant must maintain one repository named <strong>python-winter-sprint-2026</strong>
-            </p>
-            <div class="github-structure">
-python-winter-sprint-2026/
-│
-├── Day-1/
-│   └── program.py
-├── Day-2/
-│   └── program.py
-├── Day-3/
-│   └── program.py
-│
-└── ...
-            </div>
-            <p style="text-align: center; font-size: 1.1rem; margin-top: 30px;">
-                This repository is your proof of learning and participation.
-            </p>
+    <div class="container">
+        <h2 style="text-align:center;">📁 GitHub Repository Structure</h2>
+
+        <p style="text-align:center; font-size:1.1rem; margin-bottom:25px;">
+            Every participant must maintain one repository named
+            <strong>python-winter-sprint-2026</strong>
+        </p>
+
+        <div class="github-structure">
+            <ul class="tree">
+                <li>
+                    <span class="folder">
+                        <span class="icon">📁</span> python-winter-sprint-2026
+                    </span>
+                    <ul class="tree">
+                        <li>
+                            <span class="folder">
+                                <span class="icon">📁</span> Day-1
+                            </span>
+                            <ul class="tree">
+                                <li>
+                                    <span class="file">
+                                        <span class="icon">📄</span> program.py
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <span class="folder">
+                                <span class="icon">📁</span> Day-2
+                            </span>
+                            <ul class="tree">
+                                <li>
+                                    <span class="file">
+                                        <span class="icon">📄</span> program.py
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <span class="folder">
+                                <span class="icon">📁</span> Day-3
+                            </span>
+                            <ul class="tree">
+                                <li>
+                                    <span class="file">
+                                        <span class="icon">📄</span> program.py
+                                    </span>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <span class="file">
+                                <span class="icon">⋯</span>
+                            </span>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
         </div>
-    </section>
+
+        <p style="text-align:center; margin-top:25px;">
+            This repository is your proof of learning and participation.
+        </p>
+    </div>
+</section>
 
     <section id="submission">
         <div class="container">
@@ -494,13 +657,86 @@ python-winter-sprint-2026/
         </div>
     </section>
 
-    <section id="organizer">
+    <section id="pdfs">
         <div class="container">
-            <h2>🧑‍💻 Organizer</h2>
-            <div class="organizer-card">
-                <h3>Arshad Ali</h3>
-                <p>Computer Engineering '29</p>
-                <p><strong>President, Coding Council</strong></p>
+            <h2>📄 Day-wise PDFs</h2>
+            <p style="text-align: center; font-size: 1.1rem; margin-bottom: 40px;">
+                Each day's PDF contains track-wise tasks, topics to cover, instructions, and sample input/output.
+            </p>
+            
+            <div class="pdf-grid">
+                <div class="pdf-card">
+                    <h3>📅 Day 1</h3>
+                    <p>Variables, Data Types, Strings</p>
+                    <a href="/day-01-python-sprint.pdf" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 Day 2</h3>
+                    <p>Lists, Tuples, Dictionary & Sets</p>
+                    <a href="/day-02-python-sprint.pdf" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 Day 3</h3>
+                    <p>Conditional Statements</p>
+                    <a href="/day-03-python-sprint.pdf" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 Day 4</h3>
+                    <p>Loops in Python</p>
+                    <a href="/day-04-python-sprint.pdf" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 7th January</h3>
+                    <p>Functions and Recursion (Core) & Functions and Recursion (Foundation)</p>
+                    <a href="/jan-07-python-sprint.pdf" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 8th January</h3>
+                    <p>File I/O (Core) & Lists, Tuples, Dictionary & Sets (Foundation)</p>
+                    <a href="/jan-08-python-sprint.pdf" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 Day #</h3>
+                    <p>Project Integration</p>
+                    <a href="#" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 Day #</h3>
+                    <p>Final Project - Part 1</p>
+                    <a href="#" class="pdf-link">Download PDF</a>
+                </div>
+                <div class="pdf-card">
+                    <h3>📅 Day #</h3>
+                    <p>Final Project - Part 2</p>
+                    <a href="#" class="pdf-link">Download PDF</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-size: 1rem; margin-top: 30px; color: #666;">
+                📌 PDFs will be updated daily. Check back each day for new content!
+            </p>
+        </div>
+    </section>
+
+    <section id="organizers">
+        <div class="container">
+            <h2>🧑‍💻 Organizers</h2>
+            <div class="organizers-grid">
+                <div class="organizer-card">
+                    <h3>Arshad Ali</h3>
+                    <p>Computer Engineering '29</p>
+                    <p><strong>President, Coding Council</strong></p>
+                </div>
+                <div class="organizer-card">
+                    <h3>Areeb Khalid</h3>
+                    <p>CSDS '29</p>
+                    <p><strong>VP & Operations Head, Coding Council</strong></p>
+                </div>
+                <div class="organizer-card">
+                    <h3>Zaid Rahman</h3>
+                    <p>Computer Engineering '29</p>
+                    <p><strong>Graphics Head, Coding Council</strong></p>
+                </div>
             </div>
         </div>
     </section>
