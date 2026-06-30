@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://python-sprint-jmi.netlify.app/sitemap.xml
